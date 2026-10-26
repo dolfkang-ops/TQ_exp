@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산림복지 숲체험 파일럿 × 캠핑장 매칭 안내 | 땡큐캠핑 파트너스</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#F2F8F4',
+                            100: '#E1EFE6',
+                            200: '#C4DFCE',
+                            300: '#9BCAAE',
+                            400: '#6CB08B',
+                            500: '#46956B',
+                            600: '#327752',
+                            DEFAULT: '#1E4620', // Forest Deep Green
+                            dark: '#143525',
+                            900: '#0F281C',
+                            950: '#091A12'
+                        },
+                        thankq: {
+                            light: '#E8F5E9',
+                            DEFAULT: '#2E7D32',
+                            dark: '#1B5E20',
+                        },
+                        accent: {
+                            DEFAULT: '#E65100', // Energetic Camping Warm Orange
+                            dark: '#BF360C',
+                            light: '#FFF3E0',
+                            amber: '#F59E0B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+                        serif: ['Noto Serif KR', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Alpine.js for Interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&display=swap");
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E4620;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #143525;
+        }
+
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased" x-data="{ scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 80)">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 transition-all duration-300 border-b"
+            :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3.5 border-gray-200' : 'bg-forest-950/75 backdrop-blur-sm py-4 border-white/10'">
+        <div class="container mx-auto px-4 flex items-center justify-between max-w-6xl">
+            <!-- Logo area -->
+            <a href="#" class="flex items-center space-x-2.5">
+                <span class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-white text-base shadow-sm">
+                    <i class="fa-solid fa-tree"></i>
+                </span>
+                <span class="text-lg md:text-xl font-black tracking-tight" :class="scrolled ? 'text-gray-900' : 'text-white'">
+                    <span class="text-forest-600" :class="scrolled ? 'text-forest' : 'text-emerald-400'">산림복지 숲체험</span>
+                    <span class="text-gray-400 font-light mx-1">×</span>
+                    <span class="text-thankq" :class="scrolled ? 'text-thankq' : 'text-green-300'">땡큐캠핑</span>
+                </span>
+            </a>
+
+            <!-- PC Navigation & CTA -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#why-section" class="text-sm font-semibold transition" :class="scrolled ? 'text-gray-600 hover:text-forest' : 'text-gray-200 hover:text-white'">도입 혜택</a>
+                <a href="#catalog-section" class="text-sm font-semibold transition" :class="scrolled ? 'text-gray-600 hover:text-forest' : 'text-gray-200 hover:text-white'">파일럿 10종</a>
+                <a href="#results-section" class="text-sm font-semibold transition" :class="scrolled ? 'text-gray-600 hover:text-forest' : 'text-gray-200 hover:text-white'">시범운영 실적·설문</a>
+                <a href="#live-photos-section" class="text-sm font-semibold transition" :class="scrolled ? 'text-gray-600 hover:text-forest' : 'text-gray-200 hover:text-white'">현장 갤러리</a>
+                <a href="#structure-section" class="text-sm font-semibold transition" :class="scrolled ? 'text-gray-600 hover:text-forest' : 'text-gray-200 hover:text-white'">협업 체계</a>
+                <a href="#process-section" class="text-sm font-semibold transition" :class="scrolled ? 'text-gray-600 hover:text-forest' : 'text-gray-200 hover:text-white'">진행 절차</a>
+                
+                <a href="#contact-section" class="bg-accent hover:bg-accent-dark text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md transition transform hover:-translate-y-0.5">
+                    11월 연계 신청
+                </a>
+            </div>
+            
+            <!-- Mobile CTA Button -->
+            <div class="md:hidden">
+                <a href="#contact-section" class="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded-full font-bold text-xs shadow-md transition">
+                    11월 신청
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] md:min-h-screen flex flex-col justify-center items-center text-center -mt-20 pt-24 pb-16 bg-cover bg-center overflow-hidden"
+             style="background-image: linear-gradient(rgba(9, 26, 18, 0.74), rgba(9, 26, 18, 0.90)), url('자연이 만드는 숲체험 안내-1.png');">
+        
+        <!-- Ambient forest overlay effect -->
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-95"></div>
+
+        <div class="container mx-auto px-4 z-10 py-10 flex flex-col items-center justify-between h-full max-w-5xl">
+            <div class="my-auto space-y-6 md:space-y-8">
+                
+                <!-- Tagline Badge -->
+                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-white text-xs md:text-sm font-semibold tracking-wider">
+                    <span class="text-amber-400 font-bold"><i class="fa-solid fa-flag-checkered mr-1"></i> 숲체험 파일럿 프로그램</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+                    <span class="text-emerald-300 font-medium">11월 주말 한정 운영</span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight drop-shadow-lg tracking-tight">
+                    우리 캠핑장에<br class="sm:hidden">
+                    <span class="text-amber-400 underline decoration-wavy decoration-1 underline-offset-8">국가공인 숲체험</span>을 더하세요
+                </h1>
+
+                <!-- Sub-messages -->
+                <p class="text-lg sm:text-xl md:text-2xl text-emerald-100 font-medium max-w-3xl mx-auto leading-relaxed drop-shadow">
+                    “새 시설 없이, 공인 전문 지도사가 찾아가는 특별한 가족 체험”<br class="hidden sm:inline">
+                    <span class="text-white font-bold bg-white/10 px-3 py-1 rounded-lg mt-2 inline-block">10월 시범운영 127+ 팀 검증 & 설문 피드백을 완벽 반영한 업그레이드 파일럿!</span>
+                </p>
+
+                <!-- Core Details in Prose -->
+                <div class="max-w-3xl mx-auto space-y-2 text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                    <p>
+                        캠핑장의 숲길, 공터, 야외 테이블 그대로! <span class="text-white font-semibold">시설 투자비 0원</span>으로 프리미엄 생태 교육 공간이 열립니다.
+                    </p>
+                    <p>
+                        검증된 산림복지전문업체의 10종 파일럿 프로그램과 <span class="text-white font-semibold">땡큐캠핑 200만 회원 예약망</span>이 결합하여 캠핑장 고객 만족도를 획기적으로 높입니다.
+                    </p>
+                </div>
+
+                <!-- Three Core Pillars -->
+                <div class="grid grid-cols-3 gap-2.5 md:gap-5 max-w-2xl mx-auto pt-2 pb-2">
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 md:p-5 border border-white/15 hover:border-emerald-400/50 transition">
+                        <div class="text-amber-400 font-black text-lg md:text-3xl">0원</div>
+                        <div class="text-white text-xs md:text-sm font-bold mt-1">시설 투자비</div>
+                        <div class="text-gray-300 text-[10px] md:text-xs mt-0.5 hidden sm:block">캠핑장 자연 그대로 활용</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 md:p-5 border border-white/15 hover:border-emerald-400/50 transition">
+                        <div class="text-emerald-400 font-black text-lg md:text-3xl">10종</div>
+                        <div class="text-white text-xs md:text-sm font-bold mt-1">파일럿 구성</div>
+                        <div class="text-gray-300 text-[10px] md:text-xs mt-0.5 hidden sm:block">11월 주말 운영 상품</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 md:p-5 border border-white/15 hover:border-emerald-400/50 transition">
+                        <div class="text-sky-300 font-black text-lg md:text-3xl">200만</div>
+                        <div class="text-white text-xs md:text-sm font-bold mt-1">땡큐캠핑 회원</div>
+                        <div class="text-gray-300 text-[10px] md:text-xs mt-0.5 hidden sm:block">국내 최대 모객 네트워크</div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
+                    <a href="#contact-section" class="w-full sm:w-auto bg-accent hover:bg-accent-dark text-white font-extrabold px-8 py-4 rounded-xl text-base md:text-lg shadow-xl shadow-accent/25 transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                        <span>우리 캠핑장 11월 연계 신청하기</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                    <a href="#results-section" class="w-full sm:w-auto bg-white/15 hover:bg-white/25 text-white border border-white/25 font-bold px-8 py-4 rounded-xl text-base md:text-lg transition backdrop-blur-sm flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-chart-pie text-amber-400"></i>
+                        <span>현장 설문 결과 & 실제 사진 보기</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="mt-8 animate-bounce text-gray-400 text-xs">
+                아래로 스크롤하여 상세 내용 확인하기<br>
+                <i class="fa-solid fa-chevron-down mt-1.5 text-sm text-emerald-400"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Highlight Sentence Strip -->
+    <div class="bg-forest-900 text-white py-5 border-y border-forest-800 overflow-hidden shadow-inner">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-3 max-w-6xl">
+            <div class="flex items-center space-x-3">
+                <span class="bg-amber-400 text-forest-950 text-xs px-2.5 py-1 rounded-md font-black tracking-wide">PILOT MATCHING</span>
+                <p class="font-bold text-sm md:text-base">“새 시설 공사 없이 캠핑장의 숲이 체험 공간이 되는 11월 주말 한정 파일럿 사업”</p>
+            </div>
+            <div class="flex items-center space-x-2 text-sm text-emerald-200">
+                <i class="fa-solid fa-phone text-amber-300"></i>
+                <span>제휴 및 도입 문의: <a href="tel:02-6959-5622" class="text-white font-extrabold underline text-base hover:text-amber-300">02-6959-5622</a></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 1: Why Campsites Need This -->
+    <section id="why-section" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-thankq font-bold uppercase tracking-wider text-xs md:text-sm">Why Forest Matching?</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    캠핑장 사장님이 <span class="text-thankq">산림복지 숲체험을 선택해야 하는</span> 이유
+                </h2>
+                <div class="w-12 h-1 bg-thankq mx-auto rounded mb-4"></div>
+                <p class="text-gray-600 text-sm md:text-base">단순 숙박을 넘어, 아이와 부모 모두가 열광하는 차별화된 패밀리 킬러 콘텐츠를 갖추세요.</p>
+            </div>
+
+            <!-- 4 Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-forest/30 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-forest text-xl font-bold mb-6">
+                            01
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">시설 투자비 0원</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            건축 인허가나 별도 리모델링 비용이 일체 들지 않습니다. 캠핑장 내 <span class="font-semibold text-gray-900">숲길, 잔디마당, 공터, 야외 테이블 등 자연 환경 그대로</span>가 훌륭한 교실이 됩니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/60 text-xs font-semibold text-thankq">
+                        <i class="fa-solid fa-piggy-bank mr-1"></i> 고정 자본 지출 부담 제로
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-forest/30 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-forest text-xl font-bold mb-6">
+                            02
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">공인 지도사 현장 파견</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            캠핑장 직원이 교육할 필요가 없습니다. <span class="font-semibold text-gray-900">국가 산림복지전문업 공인 자격증 지도사</span>가 교구와 재료를 갖추고 직접 현장에 파견되어 안전을 총괄합니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/60 text-xs font-semibold text-thankq">
+                        <i class="fa-solid fa-id-badge mr-1"></i> 프로그램 기획·안전 지도 전담
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-forest/30 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-forest text-xl font-bold mb-6">
+                            03
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">시간대별·우천별 풀 라인업</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            오후 주간 숲탐험뿐 아니라, 캠퍼들이 열광하는 <span class="font-semibold text-gray-900">야간 별빛탐사(밤숲)</span>, 지친 성인을 위한 <span class="font-semibold text-gray-900">산림치유</span>, 비 오는 날에도 가능한 <span class="font-semibold text-gray-900">셀프 키트(테라리움)</span>까지 완비되어 있습니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/60 text-xs font-semibold text-thankq">
+                        <i class="fa-solid fa-cloud-sun-rain mr-1"></i> 날씨·시간 구애 없는 운영
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-forest/30 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-forest text-xl font-bold mb-6">
+                            04
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">땡큐캠핑 200만 회원 연동</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            홍보 고민이 없습니다. 국내 1등 캠핑 플랫폼 <span class="font-semibold text-gray-900">땡큐캠핑의 200만 회원 인프라</span>를 통해 예약 시 부가상품 패키지 판매 및 정산 업무를 자동화합니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/60 text-xs font-semibold text-thankq">
+                        <i class="fa-solid fa-users mr-1"></i> 200만 캠퍼 대상 즉시 모객
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Full Program Catalog (숲체험 파일럿 구성 10종) -->
+    <section id="catalog-section" class="py-20 bg-gray-50 border-y border-gray-200" x-data="programCatalog">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-block bg-emerald-100 text-forest text-xs font-bold px-3 py-1 rounded-full mb-3">
+                    <i class="fa-solid fa-bullseye mr-1"></i> 숲체험 파일럿 프로그램 구성 (11월 주말 한정)
+                </div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                    산림복지 공인 체험상품 <span class="text-forest">파일럿 라인업 10선</span>
+                </h2>
+                <div class="w-12 h-1 bg-forest mx-auto rounded mb-4"></div>
+                <p class="text-gray-600 text-sm md:text-base">
+                    상기 상품은 <strong>11월 주말 운영을 위한 숲체험 파일럿 구성</strong>입니다. 캠핑장 환경과 주요 고객층(유아·초등 가족, 부부·커플, 성인 단체)에 맞춰 선택하실 수 있습니다.
+                </p>
+            </div>
+
+            <!-- Filter Card -->
+            <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm mb-10 space-y-4">
+                
+                <!-- Category Filter -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider w-24">체험 분야:</span>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" @click="category = 'all'" :class="category === 'all' ? 'bg-forest text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition">
+                            전체보기
+                        </button>
+                        <button type="button" @click="category = '숲해설'" :class="category === '숲해설' ? 'bg-forest text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition">
+                            🌱 숲해설·탐험
+                        </button>
+                        <button type="button" @click="category = '야간탐사'" :class="category === '야간탐사' ? 'bg-forest text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition">
+                            🌙 밤숲 야간탐사
+                        </button>
+                        <button type="button" @click="category = '산림치유'" :class="category === '산림치유' ? 'bg-forest text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition">
+                            🧘 산림치유·힐링
+                        </button>
+                        <button type="button" @click="category = '자연공예'" :class="category === '자연공예' ? 'bg-forest text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition">
+                            🎨 자연공예·셀프키트
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Operating Type Filter -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 pt-3 border-t border-gray-100">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider w-24">운영 형태:</span>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" @click="opType = 'all'" :class="opType === 'all' ? 'bg-emerald-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition">
+                            전체
+                        </button>
+                        <button type="button" @click="opType = '지도사 방문'" :class="opType === '지도사 방문' ? 'bg-emerald-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition">
+                            👨‍🏫 지도사 캠핑장 방문형
+                        </button>
+                        <button type="button" @click="opType = '셀프키트'" :class="opType === '셀프키트' ? 'bg-emerald-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition">
+                            📦 셀프 체험 키트 (우천 대응)
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <template x-for="item in filteredProducts" :key="item.id">
+                    <div class="bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                        <div>
+                            <!-- Card Header Image & Badges -->
+                            <div class="relative h-48 overflow-hidden bg-gray-200">
+                                <img :src="item.img" :alt="item.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent"></div>
+                                
+                                <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                                    <span class="bg-accent text-white text-[11px] font-bold px-2 py-0.5 rounded-md shadow-sm">
+                                        11월 주말 파일럿
+                                    </span>
+                                    <span class="bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2 py-0.5 rounded-md">
+                                        가평 · 양평
+                                    </span>
+                                    <span x-show="item.isCertified" class="bg-blue-600 text-white text-[11px] font-bold px-2 py-0.5 rounded-md shadow-sm">
+                                        <i class="fa-solid fa-medal mr-0.5"></i> 국가인증
+                                    </span>
+                                </div>
+
+                                <div class="absolute bottom-3 left-3 right-3 text-white">
+                                    <span class="text-xs text-emerald-300 font-semibold tracking-wide" x-text="item.category + ' · ' + item.type"></span>
+                                    <h3 class="text-xl font-black text-white leading-tight" x-text="item.title"></h3>
+                                </div>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="p-5 space-y-3">
+                                <p class="text-gray-600 text-xs leading-relaxed line-clamp-2" x-text="item.desc"></p>
+                                
+                                <div class="bg-gray-50 rounded-xl p-3 border border-gray-100 text-xs grid grid-cols-2 gap-2">
+                                    <div>
+                                        <span class="text-gray-400 block text-[10px]">체험 기준가</span>
+                                        <span class="font-bold text-gray-900" x-text="Number(item.price).toLocaleString() + '원/인' + (item.priceTeam ? '(팀)' : '')"></span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-400 block text-[10px]">소요 시간</span>
+                                        <span class="font-bold text-forest" x-text="item.duration"></span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-400 block text-[10px]">적정 정원</span>
+                                        <span class="font-medium text-gray-800" x-text="item.capacity"></span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-400 block text-[10px]">우천 대응</span>
+                                        <span class="font-medium" :class="item.rainy === '좋음' ? 'text-blue-600 font-bold' : 'text-gray-700'" x-text="item.rainy"></span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1 pt-1">
+                                    <template x-for="tag in item.checkpoints" :key="tag">
+                                        <span class="bg-emerald-50 text-forest text-[11px] font-medium px-2 py-0.5 rounded-md border border-emerald-100" x-text="'#' + tag"></span>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Actions -->
+                        <div class="p-5 pt-0 border-t border-gray-100 mt-2 flex gap-2">
+                            <button type="button" @click="openCurriculum(item)" class="flex-1 py-2.5 px-3 rounded-xl border border-gray-200 text-xs font-bold text-gray-700 hover:bg-gray-50 transition text-center">
+                                상세 커리큘럼
+                            </button>
+                            <button type="button" @click="selectAndApply(item)" class="flex-1 py-2.5 px-3 rounded-xl bg-forest hover:bg-forest-dark text-white text-xs font-bold shadow-sm transition text-center">
+                                캠핑장에 신청
+                            </button>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+
+            <!-- Curriculum Detail Modal -->
+            <div class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/75" 
+                 x-show="showCurriculumModal" x-transition x-cloak @keydown.escape.window="closeCurriculum()">
+                <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8" @click.away="closeCurriculum()">
+                    <div class="flex justify-between items-start border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-forest" x-text="curModalItem.category + ' · ' + curModalItem.type + ' (11월 파일럿)'"></span>
+                            <h3 class="text-2xl font-black text-gray-900 mt-0.5" x-text="curModalItem.title"></h3>
+                            <p class="text-xs text-gray-500 mt-1" x-text="curModalItem.subTitle"></p>
+                        </div>
+                        <button @click="closeCurriculum()" class="text-gray-400 hover:text-gray-700 text-2xl font-bold p-1">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div class="space-y-4 my-4">
+                        <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100 flex justify-around text-center text-xs">
+                            <div><span class="text-gray-400 block">체험 비용</span><strong class="text-forest text-sm" x-text="Number(curModalItem.price).toLocaleString() + '원'"></strong></div>
+                            <div><span class="text-gray-400 block">소요 시간</span><strong class="text-forest text-sm" x-text="curModalItem.duration"></strong></div>
+                            <div><span class="text-gray-400 block">추천 대상</span><strong class="text-forest text-sm" x-text="curModalItem.target"></strong></div>
+                        </div>
+
+                        <h4 class="font-bold text-gray-900 text-sm flex items-center pt-2">
+                            <i class="fa-solid fa-shoe-prints text-forest mr-2"></i> 세부 진행 단계 (STEP 1~4)
+                        </h4>
+
+                        <div class="space-y-3">
+                            <template x-for="(st, idx) in curModalItem.curriculum" :key="idx">
+                                <div class="bg-gray-50 rounded-2xl p-4 border border-gray-200/70 flex gap-3.5 items-start">
+                                    <div class="w-7 h-7 rounded-full bg-forest text-white font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5" x-text="idx + 1"></div>
+                                    <div class="space-y-1">
+                                        <div class="flex items-center gap-2">
+                                            <h5 class="font-bold text-gray-900 text-sm" x-text="st.title"></h5>
+                                            <span class="bg-white border border-gray-200 text-gray-600 text-[10px] font-semibold px-2 py-0.5 rounded" x-text="st.subtitle"></span>
+                                        </div>
+                                        <p class="text-xs text-gray-600 leading-relaxed" x-text="st.desc"></p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-100 flex gap-3">
+                        <button type="button" @click="closeCurriculum()" class="flex-1 py-3 rounded-xl border border-gray-200 font-bold text-xs text-gray-600 hover:bg-gray-50">
+                            닫기
+                        </button>
+                        <button type="button" @click="selectAndApply(curModalItem)" class="flex-1 py-3 rounded-xl bg-accent hover:bg-accent-dark text-white font-bold text-xs shadow-md">
+                            이 프로그램으로 연계 신청
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Proven Results & Real Survey Analysis (엑셀 설문 데이터 완벽 분석 반영) -->
+    <section id="results-section" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-accent font-bold uppercase tracking-wider text-xs md:text-sm">Real Testimonials & Survey Data</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    두 캠핑장에서 검증된 <span class="text-accent">실제 시범운영 실적 및 설문 분석</span>
+                </h2>
+                <div class="w-12 h-1 bg-accent mx-auto rounded mb-4"></div>
+                <p class="text-gray-600 text-sm md:text-base">10월 실제 시범운영 3회에서 수집된 29건의 실제 설문 응답과 고객 리얼 보이스를 공개합니다.</p>
+            </div>
+
+            <!-- Big Stat Showcase Box -->
+            <div class="bg-gradient-to-br from-forest-900 via-forest-800 to-forest-950 text-white rounded-3xl p-8 md:p-12 mb-12 shadow-xl border border-forest-700">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="space-y-3 text-center lg:text-left max-w-xl">
+                        <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            Verified Track Record
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-black leading-snug">
+                            유료 체험(1인 1만 원)에도<br>
+                            참가 신청 쇄도 & 재참여 의향 100%!
+                        </h3>
+                        <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+                            설문 응답자의 90% 이상이 <strong>“숲체험 프로그램 운영 여부가 캠핑장 선택에 큰 영향을 준다”</strong>고 답변했습니다.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 md:gap-8 w-full lg:w-auto">
+                        <div class="text-center border-r border-white/10 pr-4 md:pr-8">
+                            <div class="text-3xl md:text-5xl font-black text-amber-400">127<span class="text-xl md:text-2xl">+</span></div>
+                            <div class="text-xs md:text-sm text-gray-300 mt-1 font-medium">총 참가 인원·팀</div>
+                        </div>
+                        <div class="text-center border-r border-white/10 pr-4 md:pr-8">
+                            <div class="text-3xl md:text-5xl font-black text-emerald-400">100<span class="text-xl md:text-2xl">%</span></div>
+                            <div class="text-xs md:text-sm text-gray-300 mt-1 font-medium">최고 고객 만족도</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-5xl font-black text-sky-400">0<span class="text-xl md:text-2xl">원</span></div>
+                            <div class="text-xs md:text-sm text-gray-300 mt-1 font-medium">캠핑장 시설 투자비</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Case Studies Cards with Survey Details -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+                <!-- Case 1: 명돈골 1차 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:border-forest/40 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-gray-200 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-campground text-forest"></i>
+                                <span class="font-extrabold text-gray-900 text-base">명돈골 1차</span>
+                            </div>
+                            <span class="text-xs text-gray-500 bg-white px-2.5 py-1 rounded-full border border-gray-200">10월 4일</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <span class="inline-block bg-emerald-100 text-forest text-xs font-bold px-2.5 py-1 rounded-md">숲속 꼬마 탐험대 (오감형)</span>
+                            <div class="flex justify-between items-baseline pt-1">
+                                <span class="text-xs text-gray-500">참가 실적</span>
+                                <span class="text-2xl font-black text-gray-900">59명 참가</span>
+                            </div>
+                            <div class="text-xs text-gray-600 bg-white p-3 rounded-xl border border-gray-200 space-y-1">
+                                <div><strong>설문 응답:</strong> 11명 (전원 '만족' 이상)</div>
+                                <div><strong>재참여 의향:</strong> 적극 참여 100%</div>
+                                <div><strong>캠핑장 선택 영향:</strong> 100% 긍정 응답</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-gray-200">
+                        <div class="bg-emerald-600 text-white rounded-xl p-3 flex items-center justify-between">
+                            <span class="text-xs font-bold"><i class="fa-solid fa-check-circle mr-1"></i> 전반적 만족도</span>
+                            <span class="text-sm font-black">만족 100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2: 명돈골 2차 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:border-blue-400 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-gray-200 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-campground text-blue-600"></i>
+                                <span class="font-extrabold text-gray-900 text-base">명돈골 2차</span>
+                            </div>
+                            <span class="text-xs text-gray-500 bg-white px-2.5 py-1 rounded-full border border-gray-200">10월 10일</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-md">숲속 보물찾기 (탐정 미션)</span>
+                            <div class="flex justify-between items-baseline pt-1">
+                                <span class="text-xs text-gray-500">참가 실적</span>
+                                <span class="text-2xl font-black text-gray-900">56팀 참가</span>
+                            </div>
+                            <div class="text-xs text-gray-600 bg-white p-3 rounded-xl border border-gray-200 space-y-1">
+                                <div><strong>설문 응답:</strong> 12명 (만족 58%, 보통 17%)</div>
+                                <div><strong>핵심 인사이트:</strong> 대규모(56팀) 몰림 현상</div>
+                                <div><strong>피드백:</strong> 회차별 정원제 & 연령별 미션 요구</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-gray-200">
+                        <div class="bg-blue-600 text-white rounded-xl p-3 flex items-center justify-between">
+                            <span class="text-xs font-bold"><i class="fa-solid fa-lightbulb mr-1"></i> 11월 개선 반영</span>
+                            <span class="text-sm font-black">정원제 & 퀴즈 미션 개편</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3: 분지울작은캠핑장 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:border-amber-400 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-gray-200 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-campground text-amber-600"></i>
+                                <span class="font-extrabold text-gray-900 text-base">분지울작은캠핑장</span>
+                            </div>
+                            <span class="text-xs text-gray-500 bg-white px-2.5 py-1 rounded-full border border-gray-200">10월 10일</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md">솔방울 버드피더 만들기 (공예)</span>
+                            <div class="flex justify-between items-baseline pt-1">
+                                <span class="text-xs text-gray-500">참가 실적</span>
+                                <span class="text-2xl font-black text-gray-900">12팀 참가</span>
+                            </div>
+                            <div class="text-xs text-gray-600 bg-white p-3 rounded-xl border border-gray-200 space-y-1">
+                                <div><strong>설문 응답:</strong> 6명 (전원 '매우 만족' 100%)</div>
+                                <div><strong>강사 전문성 평가:</strong> 만점 (친절·몰입도 최상)</div>
+                                <div><strong>후기:</strong> "소녀감성이 느껴진 최고의 힐링"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-gray-200">
+                        <div class="bg-amber-600 text-white rounded-xl p-3 flex items-center justify-between">
+                            <span class="text-xs font-bold"><i class="fa-solid fa-crown mr-1"></i> 전반적 만족도</span>
+                            <span class="text-sm font-black">매우 만족 100%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Real Voice Quotes from Surveys (실제 참가자 설문 주관식 후기 인용) -->
+            <div class="bg-emerald-50/70 border border-emerald-200 rounded-3xl p-6 sm:p-8">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="w-10 h-10 rounded-full bg-forest text-white flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-comments"></i>
+                    </span>
+                    <div>
+                        <h4 class="text-lg font-black text-gray-900">설문조사 실제 참가자 리얼 보이스 (주관식 응답 전문)</h4>
+                        <p class="text-xs text-gray-500">캠핑장을 직접 이용한 가족 캠퍼들이 남겨주신 생생한 평가입니다.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-emerald-100 shadow-sm space-y-2">
+                        <div class="text-amber-500 text-sm">★★★★★</div>
+                        <p class="text-xs text-gray-700 leading-relaxed font-medium">
+                            “올해 수많은 캠핑장을 방문했는데 제일 좋았던 캠핑장이었어요! 아이들 때문에 키즈 캠핑장을 주로 가는데 뻔한 이벤트 말고 <strong>색다른 숲체험을 경험해서 너무 좋았습니다.</strong> 자연 주제 프로그램이면 무조건 참여합니다!”
+                        </p>
+                        <div class="text-[11px] text-gray-400 pt-1 border-t border-gray-100 flex justify-between">
+                            <span>명돈골 10.04 참가 캠퍼</span>
+                            <span class="text-forest font-bold">오감 숲탐험</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-emerald-100 shadow-sm space-y-2">
+                        <div class="text-amber-500 text-sm">★★★★★</div>
+                        <p class="text-xs text-gray-700 leading-relaxed font-medium">
+                            “<strong>아이 시절로 돌아가 소녀 감성이 느껴지는 정말 행복한 시간</strong>이었어요! 만들기 선물도 소중히 간직하겠습니다. 숲에서 가족과 함께 좋은 추억 만들어주셔서 진심으로 감사합니다^^”
+                        </p>
+                        <div class="text-[11px] text-gray-400 pt-1 border-t border-gray-100 flex justify-between">
+                            <span>분지울 10.10 참가 캠퍼</span>
+                            <span class="text-forest font-bold">솔방울 버드피더</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-emerald-100 shadow-sm space-y-2">
+                        <div class="text-amber-500 text-sm">★★★★★</div>
+                        <p class="text-xs text-gray-700 leading-relaxed font-medium">
+                            “아이들이 체험할 수 있는 공간이 투명하게 오픈되어 있어 부모가 밖에서 지켜보고 사진 촬영할 수 있어 좋았습니다. <strong>작품을 직접 만들어서 사이트에 가져갈 수 있어서 만족도가 매우 높았습니다.</strong>”
+                        </p>
+                        <div class="text-[11px] text-gray-400 pt-1 border-t border-gray-100 flex justify-between">
+                            <span>명돈골 10.04 참가 캠퍼</span>
+                            <span class="text-forest font-bold">생태 공예</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10월 설문 피드백 ➡️ 11월 파일럿 개선 포인트 -->
+                <div class="mt-6 pt-6 border-t border-emerald-200/80 bg-white/80 p-5 rounded-2xl">
+                    <h5 class="text-xs font-black text-forest uppercase tracking-wider mb-2 flex items-center">
+                        <i class="fa-solid fa-wrench mr-1.5 text-accent"></i> 10월 설문 피드백을 철저히 반영한 [11월 파일럿 3대 운영 혁신]
+                    </h5>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-gray-700">
+                        <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100">
+                            <strong class="text-gray-900 block mb-1">1. 회차당 적정 정원제 엄수</strong>
+                            대규모 참가 시 혼잡 방지를 위해 회차당 15명 내외 정원 마감제를 도입하여 밀도 높은 밀착 교육을 보장합니다.
+                        </div>
+                        <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100">
+                            <strong class="text-gray-900 block mb-1">2. 연령별 미션 카드 세분화</strong>
+                            유아(5~7세) 감각 놀이와 초등학생용 추리 퀴즈 탐정 미션 카드를 분리하여 연령대별 몰입도를 극대화했습니다.
+                        </div>
+                        <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100">
+                            <strong class="text-gray-900 block mb-1">3. 야간 탐사 & 우천 키트 보강</strong>
+                            캠퍼들의 뜨거운 요청에 따라 <strong>일몰 후 19시 야간 별빛탐사</strong>와 <strong>우천 시 실내 테라리움 키트</strong>를 신규 라인업에 전격 포함했습니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Live Photo Gallery (폴더 내 실제 현장 사진 쇼케이스) -->
+    <section id="live-photos-section" class="py-20 bg-gray-50 border-b border-gray-200" x-data="liveGallery">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-forest font-bold uppercase tracking-wider text-xs md:text-sm">Live Photo Showcase</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    캠핑장 현장 <span class="text-forest">생생 사진 갤러리</span>
+                </h2>
+                <div class="w-12 h-1 bg-forest mx-auto rounded mb-4"></div>
+                <p class="text-gray-600 text-sm md:text-base">명돈골 및 분지울 캠핑장에서 진행된 실제 숲체험 프로그램 현장 사진입니다.</p>
+            </div>
+
+            <!-- Tab Selector -->
+            <div class="flex justify-center mb-8">
+                <div class="inline-flex p-1 bg-white border border-gray-200 rounded-2xl shadow-sm gap-1">
+                    <button type="button" @click="activeTab = 'all'" :class="activeTab === 'all' ? 'bg-forest text-white' : 'text-gray-600 hover:text-gray-900'" class="px-4 py-2 rounded-xl text-xs font-bold transition">
+                        전체 사진
+                    </button>
+                    <button type="button" @click="activeTab = '명돈골1차'" :class="activeTab === '명돈골1차' ? 'bg-forest text-white' : 'text-gray-600 hover:text-gray-900'" class="px-4 py-2 rounded-xl text-xs font-bold transition">
+                        명돈골 1차 (오감 탐험)
+                    </button>
+                    <button type="button" @click="activeTab = '명돈골2차'" :class="activeTab === '명돈골2차' ? 'bg-forest text-white' : 'text-gray-600 hover:text-gray-900'" class="px-4 py-2 rounded-xl text-xs font-bold transition">
+                        명돈골 2차 (보물찾기)
+                    </button>
+                    <button type="button" @click="activeTab = '분지울'" :class="activeTab === '분지울' ? 'bg-forest text-white' : 'text-gray-600 hover:text-gray-900'" class="px-4 py-2 rounded-xl text-xs font-bold transition">
+                        분지울 (솔방울 공예)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Photos Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <template x-for="(photo, index) in filteredPhotos" :key="index">
+                    <div class="group relative h-52 rounded-2xl overflow-hidden shadow-sm bg-gray-200 cursor-pointer border border-gray-200 hover:shadow-lg transition"
+                         @click="openModal(photo.src, photo.caption)">
+                        <img :src="photo.src" :alt="photo.caption" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition flex flex-col justify-end p-3">
+                            <span class="text-[10px] text-amber-300 font-bold" x-text="photo.tag"></span>
+                            <p class="text-xs text-white font-medium truncate" x-text="photo.caption"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/85" 
+                 x-show="showModal" x-transition x-cloak @keydown.escape.window="closeModal()">
+                <div class="relative max-w-4xl w-full bg-transparent flex flex-col items-center" @click.away="closeModal()">
+                    <div class="flex justify-between items-center w-full pb-3 text-white">
+                        <h5 class="text-sm font-bold truncate pr-4" x-text="modalTitle"></h5>
+                        <button @click="closeModal()" class="text-white hover:text-amber-400 text-2xl font-bold p-1">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <img :src="modalImg" :alt="modalTitle" class="max-h-[85vh] w-auto rounded-xl shadow-2xl border border-white/20 object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Three-Way Collaboration Structure -->
+    <section id="structure-section" class="py-20 bg-gray-100 border-y border-gray-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-forest font-bold uppercase tracking-wider text-xs md:text-sm">Collaboration Ecosystem</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    캠핑장이 주도하는 <span class="text-forest">3자 매칭 협업 체계</span>
+                </h2>
+                <p class="text-gray-600 text-sm md:text-base">산림복지전문업체의 공인 콘텐츠와 땡큐캠핑의 플랫폼 기술이 캠핑장을 든든히 지원합니다.</p>
+            </div>
+
+            <!-- Visual Schema Diagram -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-12">
+                
+                <!-- Forest Agency (Left) -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-forest font-bold text-lg">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </span>
+                            <div>
+                                <h4 class="font-extrabold text-gray-900 text-lg">산림복지전문업체</h4>
+                                <span class="text-xs text-forest font-bold">국가공인 인력 & 프로그램</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-600">
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-forest mt-1 mr-2 text-xs"></i> <span><strong>전문 산림교육지도사 현장 파견</strong></span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-forest mt-1 mr-2 text-xs"></i> <span>루페, 미션지, 공예 재료 일체 지참 공급</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-forest mt-1 mr-2 text-xs"></i> <span>안전 보험 가입 및 응급 매뉴얼 상시 준수</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-forest mt-1 mr-2 text-xs"></i> <span>계절 및 캠핑장 환경 맞춤 코스 설계</span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                        <span>역할: 전문 교육 & 안전 지도</span>
+                        <span class="text-forest"><i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- CAMPSITE (Center Highlighted) -->
+                <div class="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-6 border-2 border-forest shadow-lg flex flex-col justify-between transform lg:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-forest text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
+                        핵심 공간 주체
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-10 h-10 rounded-full bg-forest text-white flex items-center justify-center text-lg font-bold">
+                                <i class="fa-solid fa-campground"></i>
+                            </span>
+                            <div>
+                                <h4 class="font-extrabold text-gray-900 text-lg">캠핑장 (사장님)</h4>
+                                <span class="text-xs text-forest font-bold">자연 공간 제공 & 현장 안내</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-800 font-medium">
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-forest mt-1 mr-2 text-xs"></i> <span><strong>기존 야외 공간 제공 (숲길, 공터, 야외테이블)</strong></span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-forest mt-1 mr-2 text-xs"></i> <span>캠핑장 이용 고객 대상 프로그램 안내 협조</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-forest mt-1 mr-2 text-xs"></i> <span>체험 시간 집결 및 차량 주차 편의 지원</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-play text-forest mt-1 mr-2 text-xs"></i> <span><strong>체험 결합으로 11월 사이트 예약률 UP</strong></span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-emerald-200/50 flex items-center justify-between text-xs text-forest font-bold">
+                        <span>역할: 부지 제공 & 고객 안내</span>
+                        <span><i class="fa-solid fa-arrows-left-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- ThankQ Camping (Right) -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-thankq font-bold text-lg">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                            </span>
+                            <div>
+                                <h4 class="font-extrabold text-gray-900 text-lg">땡큐캠핑 플랫폼</h4>
+                                <span class="text-xs text-thankq font-bold">200만 회원 모객 솔루션</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-gray-600">
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span><strong>200만 캠퍼 대상 기획전 & 홍보 노출</strong></span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span>캠핑장 사이트 예약 시 숲체험 옵션 연동</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span>모바일 사전 결제 및 예약자 티켓팅 발송</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-circle-check text-thankq mt-1 mr-2 text-xs"></i> <span>실시간 매출 집계 및 투명한 자동 정산</span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                        <span>역할: 200만 모객 & 자동 정산</span>
+                        <span class="text-thankq"><i class="fa-solid fa-arrow-left"></i></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Conditions Strip Callout -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <span class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </span>
+                    <div>
+                        <h4 class="font-bold text-amber-950 text-base">체험비 및 운영 조건 사전 협의</h4>
+                        <p class="text-amber-800 text-xs md:text-sm mt-0.5">
+                            10월 시범행사 3건 모두 실제 참가비는 <strong>1인/팀 10,000원</strong>이었으며, 11월 파일럿 프로그램은 10,000원~25,000원 선에서 캠핑장 입지와 최소 인원에 맞춰 유연하게 상호 협의됩니다.
+                        </p>
+                    </div>
+                </div>
+                <a href="#contact-section" class="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap shadow-sm transition">
+                    11월 조건 문의하기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Step-by-Step 4 Processes -->
+    <section id="process-section" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-forest font-bold uppercase tracking-wider text-xs md:text-sm">Easy Onboarding</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    복잡하지 않습니다. <span class="text-forest">네 단계로 쉽게 시작하세요</span>
+                </h2>
+                <div class="w-12 h-1 bg-forest mx-auto rounded mb-4"></div>
+                <p class="text-gray-600 text-sm md:text-base">11월 주말 운영을 희망하시는 캠핑장을 위한 빠르고 안전한 도입 절차입니다.</p>
+            </div>
+
+            <!-- 4 Steps Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Step 1 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 relative shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-forest text-white font-black flex items-center justify-center text-lg">01</span>
+                        <i class="fa-solid fa-file-signature text-gray-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">참여 의향 확인</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        온라인 신청서 또는 직통 전화(02-6959-5622)를 통해 캠핑장의 11월 숲체험 도입 관심 여부를 확인합니다.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 relative shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-forest text-white font-black flex items-center justify-center text-lg">02</span>
+                        <i class="fa-solid fa-calendar-days text-gray-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">체험·11월 일정 협의</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        캠핑장의 지형 특성에 맞는 10종 파일럿 프로그램과 11월 희망 주말 일자, 예상 참가 규모를 협의합니다.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 relative shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-forest text-white font-black flex items-center justify-center text-lg">03</span>
+                        <i class="fa-solid fa-bullhorn text-gray-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">참가자 안내 및 모집</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        땡큐캠핑 예약 알림톡 및 현장 안내를 통해 11월 방문 캠퍼들을 대상으로 참가자를 사전 모집합니다.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 relative shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-10 h-10 rounded-xl bg-forest text-white font-black flex items-center justify-center text-lg">04</span>
+                        <i class="fa-solid fa-tree text-gray-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">캠핑장 현장 체험</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        공인 지도사가 모든 교구를 지참하고 현장에 방문하여 안전하고 흥미진진한 숲체험을 진행합니다.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Consultation Form (11월 주말 대상 신청서) -->
+    <section id="contact-section" class="py-20 bg-gray-50" x-data="contactForm">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent font-bold uppercase tracking-wider text-xs">Pilot Application</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
+                    캠핑장 11월 숲체험 연계 신청서
+                </h2>
+                <div class="text-gray-600 text-sm md:text-base leading-relaxed space-y-1 font-medium">
+                    <p>별도 시설 건축이나 번거로운 인력 관리 없이</p>
+                    <p class="text-gray-900 font-extrabold">캠핑장의 자연에 새로운 가치를 더하고 가족 고객의 만족을 극대화하는 방식입니다.</p>
+                    <p class="text-gray-500 font-light text-xs pt-2">11월 주말 희망 일정 및 캠핑장 환경을 입력해주시면 전문 지도사와 조율 후 24시간 이내 연락드립니다.</p>
+                </div>
+            </div>
+
+            <!-- Consultation Form Card -->
+            <div class="bg-white rounded-3xl border border-gray-200 shadow-xl p-6 sm:p-10">
+                <form @submit.prevent="submitForm()" class="space-y-6">
+                    
+                    <!-- Selected Program -->
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold text-gray-700">희망 파일럿 프로그램 <span class="text-red-500">*</span></label>
+                        <select x-model="selectedProgram" required class="w-full bg-emerald-50/50 border border-emerald-300 rounded-xl px-4 py-3 text-sm font-bold text-forest focus:outline-none focus:ring-2 focus:ring-forest transition">
+                            <option value="">희망 프로그램을 선택해주세요 (상담 후 결정 가능)</option>
+                            <option value="숲속 꼬마 탐험대 (오감 숲놀이 & 에코 크래프트)">숲속 꼬마 탐험대 (오감 숲놀이 & 에코 크래프트, 90분)</option>
+                            <option value="[밤숲체험] 별빛 숲속 야간 탐험대">[밤숲체험] 별빛 숲속 야간 탐험대 (레드라이트·UV탐사, 70분)</option>
+                            <option value="숲속 보물찾기 (자연 탐정 미션)">숲속 보물찾기 (자연 탐정 미션 & 빙고, 60분)</option>
+                            <option value="솔방울 버드피더 만들기 (생태 공예)">솔방울 버드피더 만들기 (솔방울 생태 공예, 60분)</option>
+                            <option value="나만의 작은 숲 테라리움 (셀프 키트)">나만의 작은 숲 테라리움 (우천 시 실내 가능 셀프 키트, 60분)</option>
+                            <option value="오감숲속 힐링 (싱잉볼·차 테라피)">오감숲속 힐링 (싱잉볼 숲멍·차 테라피, 90분)</option>
+                            <option value="쉼 숲: 느리게 걷고 깊게 쉬는 숲 산책">[숲해설] 쉼 숲: 느리게 걷고 깊게 쉬는 숲 산책 (50분)</option>
+                            <option value="난새, 숲새, 놀새~! (국가인증 전래숲놀이)">난새, 숲새, 놀새~! (국가인증 전래숲놀이, 60분)</option>
+                            <option value="숲선생님과 함께하는 숲탐험대">숲선생님과 함께하는 숲탐험대 (소수정예 4~6명, 90분)</option>
+                            <option value="(Remind) Wedding In the Forest">(Remind) Wedding In the Forest (부부·커플 숲해설, 90분)</option>
+                            <option value="프로그램 상담 후 결정">프로그램 상담 후 결정 (캠핑장 환경 맞춤 추천)</option>
+                        </select>
+                    </div>
+
+                    <!-- Grid fields -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Camp Name -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">캠핑장 이름 <span class="text-red-500">*</span></label>
+                            <input type="text" x-model="campName" required placeholder="예: 솔향기 오토캠핑장" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:bg-white transition">
+                        </div>
+
+                        <!-- Region -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">소재 지역 <span class="text-red-500">*</span></label>
+                            <select x-model="region" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:bg-white transition">
+                                <option value="가평군">경기 가평군</option>
+                                <option value="양평군">경기 양평군</option>
+                                <option value="기타 수도권/강원">기타 수도권 / 강원권 (협의)</option>
+                            </select>
+                        </div>
+
+                        <!-- Manager Name -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">담당자(대표자) 성함 <span class="text-red-500">*</span></label>
+                            <input type="text" x-model="managerName" required placeholder="예: 홍길동 대표" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:bg-white transition">
+                        </div>
+
+                        <!-- Contact Phone -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">연락처(핸드폰) <span class="text-red-500">*</span></label>
+                            <input type="tel" x-model="phone" required placeholder="010-0000-0000" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:bg-white transition">
+                        </div>
+
+                        <!-- Total Site Count -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">캠핑장 총 사이트 수 <span class="text-red-500">*</span></label>
+                            <input type="number" x-model="siteCount" min="1" required placeholder="예: 35" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:bg-white transition">
+                            <span class="text-[11px] text-gray-400 block">* 사이트 규모에 맞춰 적정 강사 파견 인원을 산정합니다.</span>
+                        </div>
+
+                        <!-- Preferred Time Slot -->
+                        <div class="space-y-2">
+                            <label class="block text-xs md:text-sm font-bold text-gray-700">희망 시간대</label>
+                            <select x-model="timeSlot" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:bg-white transition">
+                                <option value="오후 (14:00~16:00 추천)">오후 (14:00~16:00 체크인 후 황금시간대)</option>
+                                <option value="오전 (10:30~12:00)">오전 (10:30~12:00 체크아웃 전/퇴실 후)</option>
+                                <option value="야간 (19:00 이후 일몰 후)">야간 (19:00 이후 일몰 후 밤숲체험)</option>
+                                <option value="상호 협의">상호 협의 후 결정</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Weekend Dates Selector (11월 주말 전용) -->
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold text-gray-700">
+                            희망 운영 일자 (11월 주말 선택, 복수 선택 가능) <span class="text-red-500">*</span>
+                        </label>
+                        
+                        <div class="bg-gray-50 p-4 rounded-2xl border border-gray-200 space-y-3">
+                            <div class="text-xs font-bold text-forest">📅 2026년 11월 주말</div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                <template x-for="d in weekends11" :key="d">
+                                    <button type="button" @click="toggleWeekend(d)" 
+                                            class="py-2 px-2.5 rounded-xl text-xs font-medium border text-center transition"
+                                            :class="selectedDates.includes(d) ? 'bg-forest text-white border-forest font-bold shadow-sm' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'"
+                                            x-text="d">
+                                    </button>
+                                </template>
+                            </div>
+
+                            <div class="text-[11px] text-gray-500 pt-1" x-show="selectedDates.length > 0">
+                                <strong>선택된 일자:</strong> <span class="text-forest font-bold" x-text="selectedDates.join(', ')"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campsite Infrastructure Checkboxes -->
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold text-gray-700">캠핑장 보유 인프라 (중복 선택)</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                            <label class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-white transition">
+                                <input type="checkbox" value="주변 숲길/산책로" x-model="infra" class="accent-forest">
+                                <span>주변 숲길/산책로 인접</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-white transition">
+                                <input type="checkbox" value="야외 테이블" x-model="infra" class="accent-forest">
+                                <span>야외 테이블/쉼터</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-white transition">
+                                <input type="checkbox" value="잔디마당/공터" x-model="infra" class="accent-forest">
+                                <span>잔디마당/넓은 공터</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-white transition">
+                                <input type="checkbox" value="실내 테이블" x-model="infra" class="accent-forest">
+                                <span>실내/관리동 테이블</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-white transition">
+                                <input type="checkbox" value="야간 조명로" x-model="infra" class="accent-forest">
+                                <span>야간 안전 조명로</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-white transition">
+                                <input type="checkbox" value="강사 차량주차" x-model="infra" class="accent-forest">
+                                <span>강사 차량 주차 가능</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="space-y-2">
+                        <label class="block text-xs md:text-sm font-bold text-gray-700">추가 문의 및 요청사항</label>
+                        <textarea rows="3" x-model="message" placeholder="희망 참가 인원수, 캠핑장 지형 특징, 기타 문의사항을 편하게 남겨주세요." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:bg-white transition"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-accent hover:bg-accent-dark text-white font-black py-4 rounded-xl text-center text-lg shadow-xl shadow-accent/25 transition transform hover:-translate-y-0.5">
+                            11월 숲체험 파일럿 신청하기
+                        </button>
+                    </div>
+
+                    <p class="text-center text-xs text-gray-400">
+                        신청 접수 즉시 운영본부 및 전문업체로 전달되며, 24시간 이내 일정 조율 전화를 드립니다.
+                    </p>
+
+                </form>
+            </div>
+
+            <!-- Success Modal -->
+            <div class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/60" x-show="showSuccessModal" x-transition x-cloak>
+                <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl text-center space-y-6" @click.away="closeModal()">
+                    <div class="w-16 h-16 bg-emerald-100 text-forest rounded-full flex items-center justify-center mx-auto text-3xl">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <h4 class="text-2xl font-black text-gray-900">11월 파일럿 신청 완료!</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            제출해주신 신청 내역이 정상 접수되었습니다. 전문 숲체험 지도사와 일정 확인 후 빠르게 연락드리겠습니다.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-2xl text-left text-xs space-y-1.5 text-gray-600 border border-gray-100">
+                        <div><strong>신청 캠핑장:</strong> <span x-text="campName"></span> (<span x-text="region"></span>)</div>
+                        <div><strong>담당자:</strong> <span x-text="managerName"></span> (<span x-text="phone"></span>)</div>
+                        <div><strong>선택 프로그램:</strong> <span x-text="selectedProgram"></span></div>
+                        <div x-show="selectedDates.length > 0"><strong>희망 일정:</strong> <span x-text="selectedDates.join(', ')"></span></div>
+                        <div><strong>총 사이트 수:</strong> <span x-text="siteCount"></span>개 사이트</div>
+                    </div>
+
+                    <button @click="closeModal()" class="w-full bg-forest hover:bg-forest-dark text-white font-bold py-3.5 rounded-xl transition shadow">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Sticky Bar for Mobile -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 py-3 md:hidden shadow-lg flex items-center justify-between">
+        <div class="flex flex-col text-left">
+            <span class="text-[9px] text-gray-400 font-bold">숲체험 파일럿 (11월 주말)</span>
+            <span class="text-xs font-black text-forest-800">시설 투자 0원으로 도입</span>
+        </div>
+        <a href="#contact-section" class="bg-accent hover:bg-accent-dark text-white px-5 py-2 rounded-xl font-extrabold text-xs shadow-md transition">
+            11월 신청하기
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-forest-950 text-gray-400 py-12 pb-24 md:pb-12 border-t border-forest-900">
+        <div class="container mx-auto px-4 max-w-5xl text-center md:text-left space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-forest-800 pb-8 gap-4">
+                <span class="text-lg font-black text-white flex items-center gap-2">
+                    <span class="text-emerald-400"><i class="fa-solid fa-tree"></i></span>
+                    <span>산림복지 숲체험 파일럿 × 땡큐캠핑</span>
+                </span>
+                <div class="flex space-x-6 text-sm">
+                    <a href="tel:02-6959-5622" class="text-emerald-300 hover:text-white transition font-semibold">
+                        <i class="fa-solid fa-phone mr-1"></i> 제휴 문의: 02-6959-5622
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs leading-relaxed">
+                <div>
+                    <h5 class="text-white font-bold mb-2">산림복지 숲체험 파일럿 사업 운영본부</h5>
+                    <p>대표 유선 문의: 02-6959-5622 (평일 09:30 ~ 18:00)</p>
+                    <p>소재지: 서울특별시 강남구 테헤란로</p>
+                    <p>대상: 가평군, 양평군 및 수도권 캠핑장 (11월 주말 한정)</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-2">플랫폼 협력사: 주식회사 땡큐캠핑</h5>
+                    <p>국내 1위 캠핑 예약 플랫폼 | 회원수 200만 명</p>
+                    <p>가평·양평 캠핑장 산림복지 서비스 연동 및 기획전 독점 지원</p>
+                    <p>상담 가능 시간: 평일 09:30 ~ 18:00 (주말 및 공휴일 휴무)</p>
+                </div>
+            </div>
+
+            <div class="text-center text-[11px] text-gray-500 pt-4">
+                <p>© 2026 산림복지 숲체험 파일럿 매칭센터 & 땡큐캠핑. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpine.js Scripts with Live Photos & Products -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            
+            // 10 Curated Products
+            const productsList = [
+                {
+                    id: "prod-little-exp",
+                    title: "숲속 꼬마 탐험대",
+                    subTitle: "오감으로 빚는 자연 학교 (언플러그드 숲놀이 & 에코 크래프트)",
+                    category: "숲해설",
+                    type: "지도사 방문",
+                    price: 25000,
+                    duration: "90분",
+                    capacity: "5~15명",
+                    target: "유아 · 초등 가족",
+                    rainy: "제한적",
+                    img: "명돈골 10월 04일/KakaoTalk_20261006_095030103.jpg",
+                    desc: "캠핑장 자체가 거대한 교실이 됩니다. 스마트폰 대신 자연물을 만지며 스스로 규칙을 만드는 언플러그드 놀이와 에코 크래프트 활동입니다.",
+                    checkpoints: ["캠핑장 밀착형", "에코 크래프트", "황금시간대 14시"],
+                    curriculum: [
+                        { step: 1, title: "[감각 깨우기] 숲의 숨소리에 귀 기울이기 (20분)", subtitle: "잔디마당 / 오감 열기", desc: "텐트 앞 잔디마당에 모여 눈을 감고 1분간 바람 소리와 새소리에 귀 기울이며 굳어있던 오감을 깨우고 가벼운 관절 숲 체조를 진행합니다." },
+                        { step: 2, title: "[탐험하기] 자연 속 보물찾기 (35분)", subtitle: "산책로 / 생태 탐색", desc: "색상환 카드로 자연의 색을 찾고, 하트 돌멩이와 작은 곤충을 관찰하며 에코 크래프트에 활용할 마른 솔방울과 나뭇가지를 주머니에 수집합니다." },
+                        { step: 3, title: "[창조하기] 자연물로 만드는 나만의 예술 (35분)", subtitle: "테이블 / 공예 활동", desc: "수집한 자연 부산물로 가족 얼굴 조형물, 솔방울 숲 요정 인형을 만들고 작품 발표 후 탐험대 수료증을 증정합니다." }
+                    ]
+                },
+                {
+                    id: "prod-night-exp",
+                    title: "[밤숲체험] 별빛 숲속 야간 탐험대",
+                    subTitle: "인공 불빛을 끄고 밤에 깨어나는 야행성 생태계를 만나는 밤숲 탐험",
+                    category: "야간탐사",
+                    type: "지도사 방문",
+                    price: 15000,
+                    duration: "70분",
+                    capacity: "8~14명",
+                    target: "어린이 동반 가족",
+                    rainy: "제한적",
+                    img: "https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=1000&q=80",
+                    desc: "레드라이트를 착용하고 밤에 깨어나는 야행성 곤충, 자외선(UV) 형광 균류 관찰 및 별자리 이야기를 나누는 최고의 야간 킬러 프로그램입니다.",
+                    checkpoints: ["야간 킬러 콘텐츠", "UV 탐사 장비 지원", "일몰 후 19시"],
+                    curriculum: [
+                        { step: 1, title: "집결 및 안전 오리엔테이션 (10분)", subtitle: "잔디마당 / 암순응", desc: "야간 안전 수칙을 확인하고, 곤충 시력을 보호하는 레드라이트(붉은 조명 랜턴)를 착용하며 어둠에 적응합니다." },
+                        { step: 2, title: "오감 열기: 밤의 소리와 냄새 (15분)", subtitle: "진입로 / 감각 집중", desc: "인공 불빛을 끄고 풀벌레 소리와 밤나무 향기, 흙의 짙은 피톤치드를 온몸으로 느껴봅니다." },
+                        { step: 3, title: "야행성 생태 탐색: 플래시 & UV 관찰 (30분)", subtitle: "숲길 / UV 탐사", desc: "나무껍질 틈새의 야행성 절지동물을 관찰하고 자외선(UV) 라이트로 숲속 형광 균류의 신비로운 발광을 관찰합니다." },
+                        { step: 4, title: "별빛 쉼터 & 마무리 (15분)", subtitle: "쉼터 / 천문 관측", desc: "돗자리에 누워 별자리 이야기를 듣고 야광 소원 스티커 수료증을 전달받습니다." }
+                    ]
+                },
+                {
+                    id: "prod-treasure",
+                    title: "숲속 보물찾기 (자연 탐정 미션)",
+                    subTitle: "미션 카드를 들고 떠나는 캠핑장 자연 탐정단 놀이",
+                    category: "숲해설",
+                    type: "지도사 방문",
+                    price: 15000,
+                    priceTeam: true,
+                    duration: "60분",
+                    capacity: "10명(팀) 이상",
+                    target: "초등학생 및 가족팀",
+                    rainy: "제한적",
+                    img: "명돈골 10월10일/KakaoTalk_20261012_160312541_02.jpg",
+                    desc: "자연 탐정 미션 카드를 통해 숲속 다양한 자연물을 찾고 생태 빙고판을 채우는 참여형 팀 미션 프로그램입니다.",
+                    checkpoints: ["56팀 참가 검증", "탐정 미션 카드", "공터 활용 가능"],
+                    curriculum: [
+                        { step: 1, title: "숲과 친해지기 (10분)", subtitle: "잔디마당 / 안전 체조", desc: "전문 산림교육지도사와 가벼운 몸풀기 스트레칭을 하고 안전 수칙을 확인합니다." },
+                        { step: 2, title: "숲속 보물 미션 탐험 (25분)", subtitle: "산책로 / 미션 탐험", desc: "‘별 모양 잎사귀’, ‘까칠한 나무껍질’, ‘동물 발자국’ 등 미션 카드에 적힌 자연의 보물을 찾습니다." },
+                        { step: 3, title: "자연 탐정 정밀 관찰 (15분)", subtitle: "둘레길 / 루페 관찰", desc: "루페(돋보기)를 이용해 발견한 나뭇잎 맥, 이끼, 곤충의 움직임을 정밀하게 관찰합니다." },
+                        { step: 4, title: "자연 환원 & 나눔 (10분)", subtitle: "마무리 / 소감 나눔", desc: "자연물을 제자리에 돌려보내고, 오늘 만난 숲의 감상을 가족과 함께 나눕니다." }
+                    ]
+                },
+                {
+                    id: "prod-birdfeeder",
+                    title: "솔방울 버드피더 만들기",
+                    subTitle: "자연의 재료로 직접 만드는 친환경 생태 공예",
+                    category: "자연공예",
+                    type: "지도사 방문",
+                    price: 10000,
+                    priceTeam: true,
+                    duration: "60분",
+                    capacity: "10~20팀",
+                    target: "전 연령 (가족 단위)",
+                    rainy: "좋음 (야외 테이블)",
+                    img: "분지울 10월10일/KakaoTalk_20261010_152035677_02.jpg",
+                    desc: "숲에서 수집한 천연 대형 솔방울에 새들의 먹이를 담아 버드피더를 만들고 캠핑 텐트 사이트에 걸어두어 새들을 관찰합니다.",
+                    checkpoints: ["매우 만족 100%", "천연 공예 소장", "테이블 진행"],
+                    curriculum: [
+                        { step: 1, title: "새들의 먹이와 숲 이야기 (10분)", subtitle: "테이블 / 생태 해설", desc: "캠핑장에 찾아오는 산새들의 종류와 겨울철 먹이의 소중함을 배웁니다." },
+                        { step: 2, title: "솔방울 먹이대 엮기 (20분)", subtitle: "공예 / 노끈 매듭", desc: "천연 대형 솔방울에 마끈을 견고하게 엮어 텐트와 나무에 걸 수 있는 고리를 제작합니다." },
+                        { step: 3, title: "새 먹이 배합 및 채우기 (20분)", subtitle: "공예 / 먹이 장착", desc: "해바라기씨, 곡물 등 친환경 새 먹이를 솔방울 틈새에 정성껏 채워 넣습니다." },
+                        { step: 4, title: "사이트 설치 및 조류 관찰 (10분)", subtitle: "텐트 사이트 / 관찰", desc: "텐트 앞이나 인근 나뭇가지에 걸고 조류 관찰 가이드북을 수령합니다." }
+                    ]
+                },
+                {
+                    id: "prod-terrarium",
+                    title: "나만의 작은 숲 (테라리움)",
+                    subTitle: "유리병 속에 나만의 숲을 담아가는 친환경 힐링 공예 (우천 시 완벽 대응)",
+                    category: "자연공예",
+                    type: "셀프키트",
+                    price: 20000,
+                    duration: "60분",
+                    capacity: "자율 운영 (수량 무관)",
+                    target: "가족 · 커플",
+                    rainy: "좋음",
+                    img: "https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=1000&q=80",
+                    desc: "비가 와도 실내 테이블에서 언제든 자율 운영 가능한 친환경 키트! 식물, 이끼, 활성탄을 담아 작은 생태계를 완성합니다.",
+                    checkpoints: ["우천 시 완벽 대체", "자율 셀프 키트", "기념품 소장"],
+                    curriculum: [
+                        { step: 1, title: "작은 숲 생태 원리 (10분)", subtitle: "원리 이해", desc: "식물과 이끼, 흙의 순환 원리를 알아보고 유리병 속 작은 생태계 원리를 배웁니다." },
+                        { step: 2, title: "재료 오감 관찰 (10분)", subtitle: "키트 확인", desc: "마사토, 활성탄, 배양토, 비단이끼를 직접 만져보며 향과 촉감을 느낍니다." },
+                        { step: 3, title: "미니 정원 식재 (30분)", subtitle: "제작 활동", desc: "배수층을 깔고 흙을 다진 후, 식물과 이끼를 알맞게 배치하고 천연석으로 꾸밉니다." },
+                        { step: 4, title: "돌봄 교육 및 완성 (10분)", subtitle: "사후 관리", desc: "작품 이름을 지어 푯말을 꽂고 집에서 햇빛과 수분을 관리하는 방법을 익힙니다." }
+                    ]
+                },
+                {
+                    id: "prod-ogm",
+                    title: "오감숲속 힐링 & 명상",
+                    subTitle: "캠핑힐링: 숲과 만나고, 느끼고, 일상으로 (싱잉볼 & 3·3·5 숲호흡)",
+                    category: "산림치유",
+                    type: "지도사 방문",
+                    price: 15000,
+                    duration: "90분",
+                    capacity: "8~20명",
+                    target: "성인 · 힐링 캠퍼",
+                    rainy: "제한적",
+                    img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80",
+                    desc: "지식 전달보다 쉼, 호흡, 교감에 중점을 둔 고품격 산림치유 프로그램! 3·3·5 숲호흡과 싱잉볼 숲멍, 따뜻한 구절초차 테라피가 포함됩니다.",
+                    checkpoints: ["산림치유지도사 방문", "싱잉볼 숲멍", "차 테라피 포함"],
+                    curriculum: [
+                        { step: 1, title: "숲과 만나기 (20분)", subtitle: "호흡 이완", desc: "척추 스트레칭 후 3초 흡식-3초 정지-5초 호식의 '3·3·5 숲 호흡'으로 일상의 스트레스를 비워냅니다." },
+                        { step: 2, title: "오감으로 숲 느끼기 (50분)", subtitle: "싱잉볼 숲멍", desc: "시각·청각에 집중해 숲길을 걷고, 싱잉볼 소리와 함께 숲멍을 즐기며 숲 ASMR을 만끽합니다." },
+                        { step: 3, title: "편안함을 일상으로 (20분)", subtitle: "차 테라피", desc: "따뜻한 구절초차를 마시며 미각을 깨우고 오늘의 소감을 나눕니다." }
+                    ]
+                },
+                {
+                    id: "prod-shim-forest",
+                    title: "쉼 숲: 느리게 걷고 깊게 쉬는 숲 산책",
+                    subTitle: "평탄한 둘레길을 천천히 걸으며 즐기는 오감 휴식과 숲멍",
+                    category: "숲해설",
+                    type: "지도사 방문",
+                    price: 10000,
+                    duration: "50분",
+                    capacity: "8~14명",
+                    target: "온 가족 · 힐링 캠퍼",
+                    rainy: "제한적",
+                    img: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1000&q=80",
+                    desc: "가파른 등산 대신 완만한 캠핑장 주변 둘레길을 걸으며 들꽃을 관찰하고 나무 그늘 아래서 숲멍을 즐기는 편안한 산책입니다.",
+                    checkpoints: ["1인 1만원 부담 제로", "완만한 평지 코스", "전 연령 만족"],
+                    curriculum: [
+                        { step: 1, title: "숲과의 첫인사 (5분)", subtitle: "긴장 이완", desc: "편안한 호흡으로 숲에 들어서며 어깨와 목의 긴장을 풀어주는 스트레칭을 합니다." },
+                        { step: 2, title: "느린 걸음 생태 산책 (25분)", subtitle: "슬로우 워크", desc: "발바닥으로 흙의 쿠션을 느끼며 천천히 걷고, 루페로 작은 들꽃과 이끼를 관찰합니다." },
+                        { step: 3, title: "숲 그늘 쉼터 숲멍 (15분)", subtitle: "오감 휴식", desc: "피크닉 매트에 누워 시원한 바람과 새소리에 몸을 맡기는 숲멍을 즐깁니다." },
+                        { step: 4, title: "감성 엽서 기념 (5분)", subtitle: "여운 정리", desc: "마음에 남은 자연의 한 조각을 나누며 감성 엽서 기념품을 수령합니다." }
+                    ]
+                },
+                {
+                    id: "prod-nansea",
+                    title: "난새, 숲새, 놀새~!",
+                    subTitle: "자연에서 자연물을 소재로 놀고 배우는 국가인증 프로그램",
+                    category: "숲해설",
+                    type: "지도사 방문",
+                    price: 15000,
+                    duration: "60분",
+                    capacity: "8~15명",
+                    target: "유아 · 초등 가족",
+                    rainy: "제한적",
+                    isCertified: true,
+                    img: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1000&q=80",
+                    desc: "공인된 국가 프로그램 인증을 획득하여 신뢰도가 높으며, 나뭇가지와 도토리로 전래 숲놀이 마당을 펼치는 신나는 놀이형 숲체험입니다.",
+                    checkpoints: ["국가 프로그램 인증", "전래 숲놀이", "신체 활동 풍부"],
+                    curriculum: [
+                        { step: 1, title: "숲 인사 & 몸 깨우기 (10분)", subtitle: "동물 체조", desc: "지도사와 인사를 나누고 숲과 친해지는 동물 흉내 체조를 진행합니다." },
+                        { step: 2, title: "자연물 보물 수집 (20분)", subtitle: "재료 탐색", desc: "주변 숲에서 나뭇가지, 솔방울, 도토리 등 숲놀이 재료를 탐색합니다." },
+                        { step: 3, title: "전래 숲놀이 마당 (20분)", subtitle: "비사치기", desc: "수집한 자연물을 활용한 비사치기와 감각 협동 놀이를 펼칩니다." },
+                        { step: 4, title: "자연 환원 & 소감 (10분)", subtitle: "생태 윤리", desc: "사용한 자연물을 숲에 고맙게 돌려주며 생태계 보전의 마음을 나눕니다." }
+                    ]
+                },
+                {
+                    id: "prod-teacher",
+                    title: "숲선생님과 함께하는 숲탐험대",
+                    subTitle: "유·초등 아이들이 전문 숲선생님과 직접 탐색하는 소수정예 숲체험",
+                    category: "숲해설",
+                    type: "지도사 방문",
+                    price: 25000,
+                    duration: "90분",
+                    capacity: "4~6명 (소수 정예)",
+                    target: "유아 · 초등 소그룹",
+                    rainy: "제한적",
+                    img: "명돈골 10월 04일/KakaoTalk_20261006_095037426.jpg",
+                    desc: "전문 숲선생님이 4~6명 소수 아이들을 전담 케어하며 나무 청진기로 나무 숨소리를 듣고 대나무 도토리 릴레이를 즐기는 밀착형 프로그램입니다.",
+                    checkpoints: ["4~6명 소수 집중 케어", "나무 청진기 탐색", "부모 안심 휴식"],
+                    curriculum: [
+                        { step: 1, title: "첫 만남 & 루페 착용 (15분)", subtitle: "라포 형성", desc: "자연물 별칭을 짓고 안전 수칙 확인 후 어린이 전용 루페 목걸이를 착용합니다." },
+                        { step: 2, title: "오감 생태 탐색 (35분)", subtitle: "나무 청진기", desc: "나무 청진기로 나무가 물을 끌어올리는 소리를 직접 들어보고 잎맥을 관찰합니다." },
+                        { step: 3, title: "협동 숲놀이 (30분)", subtitle: "대나무 릴레이", desc: "대나무 레일로 도토리 릴레이를 수행하고 자연물 액자를 완성합니다." },
+                        { step: 4, title: "명예 배지 수여 (10분)", subtitle: "부모 인계", desc: "숲탐험대 배지를 수여받고 안전하게 부모님께 인계됩니다." }
+                    ]
+                },
+                {
+                    id: "prod-wedding",
+                    title: "(Remind) Wedding In the Forest",
+                    subTitle: "결혼식 형태로 진행하는 로맨틱 생태탐방 숲해설",
+                    category: "숲해설",
+                    type: "지도사 방문",
+                    price: 30000,
+                    duration: "90분",
+                    capacity: "10명 이상",
+                    target: "부부 · 커플 · 리마인드 가족",
+                    rainy: "제한적",
+                    img: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80",
+                    desc: "들풀로 화관과 꽃반지를 만들고 숲의 공생 이야기를 주례사로 듣는 감성 스토리텔링 숲해설 프로그램입니다.",
+                    checkpoints: ["부부·커플 타깃", "숲속 스냅 사진", "스토리텔링 해설"],
+                    curriculum: [
+                        { step: 1, title: "예물 준비 & 화관 공예 (30분)", subtitle: "생화 공예", desc: "생화와 들풀로 화관과 미니 부케를 엮고 토끼풀 꽃반지를 서로의 손에 끼워줍니다." },
+                        { step: 2, title: "웨딩마치 & 주례사 (40분)", subtitle: "공생 해설", desc: "클래식 BGM과 함께 숲길을 행진하고, 지의류처럼 부부의 공생 지혜를 주례사로 듣습니다." },
+                        { step: 3, title: "숲속 웨딩 스냅 촬영 (20분)", subtitle: "포토존", desc: "숲을 배경으로 가족 웨딩 스냅사진을 촬영하고 서약 카드를 작성합니다." }
+                    ]
+                }
+            ];
+
+            // Alpine: Live Photos Gallery Component
+            const livePhotoItems = [
+                // 명돈골 1차
+                { src: "명돈골 10월 04일/KakaoTalk_20261006_095030103.jpg", caption: "명돈골 1차: 전문 숲지도사의 생태 이야기와 오감 탐험 시작", tag: "명돈골 1차" },
+                { src: "명돈골 10월 04일/KakaoTalk_20261006_095037426.jpg", caption: "명돈골 1차: 루페(돋보기)로 자연의 잎맥과 곤충을 정밀 관찰하는 아이들", tag: "명돈골 1차" },
+                { src: "명돈골 10월 04일/KakaoTalk_20261006_095046023.jpg", caption: "명돈골 1차: 숲에서 수집한 자연물로 나만의 생태 소품 만들기", tag: "명돈골 1차" },
+                { src: "명돈골 10월 04일/KakaoTalk_20261006_095015910.jpg", caption: "명돈골 1차: 가족과 함께 숲길을 걸으며 피톤치드를 호흡하는 시간", tag: "명돈골 1차" },
+                // 명돈골 2차
+                { src: "명돈골 10월10일/KakaoTalk_20261012_160312541.jpg", caption: "명돈골 2차: 숲속 보물찾기 미션 카드를 받고 출발하는 가족 탐험대", tag: "명돈골 2차" },
+                { src: "명돈골 10월10일/KakaoTalk_20261012_160312541_02.jpg", caption: "명돈골 2차: 숲속 곳곳에 숨겨진 자연의 흔적을 찾는 어린이 탐정들", tag: "명돈골 2차" },
+                { src: "명돈골 10월10일/KakaoTalk_20261012_160312541_05.jpg", caption: "명돈골 2차: 미션 빙고판을 채우며 협동하는 아이들과 부모님", tag: "명돈골 2차" },
+                { src: "명돈골 10월10일/KakaoTalk_20261012_160312541_08.jpg", caption: "명돈골 2차: 발견한 보물을 지도사 선생님과 함께 확인하는 시간", tag: "명돈골 2차" },
+                // 분지울
+                { src: "분지울 10월10일/KakaoTalk_20261010_152035677.jpg", caption: "분지울: 야외 테이블에 모여 친환경 솔방울 공예를 시작하는 가족들", tag: "분지울" },
+                { src: "분지울 10월10일/KakaoTalk_20261010_152035677_02.jpg", caption: "분지울: 대형 솔방울에 마끈을 엮어 나만의 버드피더 완성", tag: "분지울" },
+                { src: "분지울 10월10일/KakaoTalk_20261010_152035677_06.jpg", caption: "분지울: 산새들을 위한 친환경 먹이를 솔방울 틈새에 채우는 모습", tag: "분지울" },
+                { src: "분지울 10월10일/KakaoTalk_20261010_152035677_10.jpg", caption: "분지울: 텐트 사이트에 걸어두고 행복해하는 참가 가족 (만족도 100%)", tag: "분지울" }
+            ];
+
+            Alpine.data('liveGallery', () => ({
+                activeTab: 'all',
+                photos: livePhotoItems,
+                showModal: false,
+                modalImg: '',
+                modalTitle: '',
+                get filteredPhotos() {
+                    if (this.activeTab === 'all') return this.photos;
+                    return this.photos.filter(p => p.tag === this.activeTab);
+                },
+                openModal(src, title) {
+                    this.modalImg = src;
+                    this.modalTitle = title;
+                    this.showModal = true;
+                },
+                closeModal() {
+                    this.showModal = false;
+                }
+            }));
+
+            // Alpine: Catalog Component
+            Alpine.data('programCatalog', () => ({
+                category: 'all',
+                opType: 'all',
+                products: productsList,
+                showCurriculumModal: false,
+                curModalItem: {},
+                get filteredProducts() {
+                    return this.products.filter(item => {
+                        const catMatch = this.category === 'all' || item.category === this.category;
+                        const typeMatch = this.opType === 'all' || item.type.includes(this.opType);
+                        return catMatch && typeMatch;
+                    });
+                },
+                openCurriculum(item) {
+                    this.curModalItem = item;
+                    this.showCurriculumModal = true;
+                },
+                closeCurriculum() {
+                    this.showCurriculumModal = false;
+                },
+                selectAndApply(item) {
+                    this.closeCurriculum();
+                    window.dispatchEvent(new CustomEvent('select-program-from-catalog', {
+                        detail: {
+                            programName: `${item.title} (${item.category}, ${item.duration})`
+                        }
+                    }));
+                    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+                }
+            }));
+
+            // Alpine: Contact Form (11월 주말 전용)
+            Alpine.data('contactForm', () => ({
+                campName: '',
+                region: '가평군',
+                managerName: '',
+                phone: '',
+                siteCount: 30,
+                selectedProgram: '',
+                timeSlot: '오후 (14:00~16:00 추천)',
+                selectedDates: [],
+                infra: ['주변 숲길/산책로', '야외 테이블'],
+                message: '',
+                showSuccessModal: false,
+
+                // 2026년 11월 주말 일자
+                weekends11: [
+                    "11.01(일)", "11.07(토)", "11.08(일)", "11.14(토)",
+                    "11.15(일)", "11.21(토)", "11.22(일)", "11.28(토)", "11.29(일)"
+                ],
+
+                init() {
+                    window.addEventListener('select-program-from-catalog', (e) => {
+                        this.selectedProgram = e.detail.programName;
+                    });
+                },
+                toggleWeekend(dateStr) {
+                    if (this.selectedDates.includes(dateStr)) {
+                        this.selectedDates = this.selectedDates.filter(d => d !== dateStr);
+                    } else {
+                        this.selectedDates.push(dateStr);
+                    }
+                },
+                submitForm() {
+                    if (!this.campName || !this.managerName || !this.phone || !this.selectedProgram) {
+                        alert('캠핑장명, 담당자명, 연락처, 희망 프로그램은 필수 입력 항목입니다.');
+                        return;
+                    }
+                    if (this.selectedDates.length === 0) {
+                        alert('희망하시는 11월 주말 일자를 최소 1개 이상 선택해주세요.');
+                        return;
+                    }
+                    this.showSuccessModal = true;
+                },
+                closeModal() {
+                    this.showSuccessModal = false;
+                    this.campName = '';
+                    this.managerName = '';
+                    this.phone = '';
+                    this.message = '';
+                    this.selectedDates = [];
+                }
+            }));
+        });
+    </script>
+</body>
+</html>
